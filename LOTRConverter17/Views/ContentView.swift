@@ -9,7 +9,13 @@ import SwiftUI
 import TipKit
 
 struct ContentView: View {
-    //Step-8,State hace que podamos cambiar la variable de false a true
+    
+    /*
+    let - la propiedad no cambia
+    var - la porpiedad puede cambiar
+    */
+    
+    //Step 1.10,State hace que podamos cambiar la variable de false a true dentro del body
     @State var showExchangeInfo = false
     //Vid 11-Step 12,para que el usuer pueda escribir en el textfield
     @State var leftAmount = ""
@@ -28,27 +34,30 @@ struct ContentView: View {
     
     var body: some View {
         /*----------------------------------------------------*/
+        //En el V-8,ponemos la estructura de la app
         ZStack{
-            //Vid 8_ Step-1 ,Background image
+            //V-9_ Step 1 ,Background image
             Image(.background)
+                //Es para hacer la imagen mas pequeña
                 .resizable()
                 .ignoresSafeArea()
             /*----------------------------------------------------*/
             VStack{
-                //Step-2,Prancing pony image
+                //Step 1.2,Prancing pony image
                 Image(.prancingpony)
                     .resizable()
                     //con este modifier no se modifica la imagen: .scaledToFit()
                     .scaledToFit()
+                    //Le ponemos un tamaño
                     .frame(height: 300)
                 
                 
-                //Step-3,Currency exchange text
+                //Step 1.3,Currency exchange text
                 Text("Currency Exchange")
                     .font(.largeTitle)
                     .foregroundStyle(.white)
                 /*----------------------------------------------------*/
-                // currency conversion section
+                // Currency conversion section
                 HStack{
                     /*----------------------------------------------------*/
                     // Left conversion section
@@ -56,19 +65,21 @@ struct ContentView: View {
                         /*----------------------------------------------------*/
                         // Currency
                         HStack{
-                            //Step-4, Curency image
+                            //Step 1.4, Curency image
                             Image(leftCurrency.image)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: 33)
                             
-                            //Step-5, Currency text
+                            //Step 1.5, Currency text
                             Text(leftCurrency.name)
                                 .font(.headline)
                                 .foregroundStyle(.white)
+                                //es un efecto
                                 .symbolEffect(.pulse)
                         }
-                        //Step 13,agregamos un padding para que se acerque
+                        /*Step 13,agregamos un padding para que se acerque las etiquetas de Amount a
+                        las monedas */
                         .padding(.bottom,-5)
                         //Vid 21,step 61, le add el onTap,para poder cambiar las monedas
                         .onTapGesture {
@@ -97,14 +108,14 @@ struct ContentView: View {
                     }
                     .border(.green)
                     
-                    //Step-6,Equal sign- SF SYMBOLS
+                    //Step 1.6,Equal sign- SF SYMBOLS
                     Image(systemName: "equal")
-                    //Para símbolos podemos usar las propiedades de Texto e imagén
+                         //Para símbolos podemos usar las propiedades de Texto e imagén
                         .font(.largeTitle)
                         .foregroundStyle(.white)
                         //le ponemos una animacion
                         .symbolEffect(.pulse)
-                    /*----------------------------------------------------*/
+                    /*--------------------------------------------------------*/
                     // Right conversion section
                     VStack{
                         // Currency
@@ -115,7 +126,7 @@ struct ContentView: View {
                                 .font(.headline)
                                 .foregroundStyle(.white)
                             
-                            //Step-7, Curency image
+                            //Step 1.7, Curency image
                             Image(rightCurrency.image)
                                 .resizable()
                                 .scaledToFit()
@@ -158,26 +169,30 @@ struct ContentView: View {
                 //Vid 80,para poner el teclado en decimales
                 .keyboardType(.decimalPad)
                 
-                //El spacer empuja todo hacia arriba ⬆️
+                //El spacer empuja todo hacia arriba ⬆️ en VStack
                 Spacer ()
                 /*----------------------------------------------------*/
-                //Vid 10-Step 7, Info button
+                
+                /*Como el botón en nuestro diseño esta en la esquina inferior derecha ponemos un
+                Hstack para que podemos empujarlo con el spacer*/
                 HStack {
                     //El spacer empujará todo hacia ➡️
                     Spacer()
-                    
+                    //V_10 - Step 1.9, Info button
                     Button{
-                        //Step-9,toggle cambia la propiedad de false a true
+                        //Step 1.11 ,toggle cambia la propiedad de false a true al dar click.
                         showExchangeInfo.toggle()
                         print("showExchangeInfo value: \(showExchangeInfo)")
                         
                     }label:{
+                        //Step 1.8
                         Image(systemName: "info.circle.fill")
                             .font(.largeTitle)
                             .foregroundStyle(.white)
                     }
-                    //step 11,lo mueve hacia a la izquierda ⬅️
+                    //esto mueve hacia a la izquierda ⬅️ desde la esquina del botón de ⓘ
                     .padding(.trailing)
+                    
                     //Vid 14,Step 27, le damos click para que nos muestre la ventana "ExchangeInfo"
                     
                     //Vid 14,Step 27,No importa donde se ponga el modifier no cambia,puede ser en cualquier parte del código
