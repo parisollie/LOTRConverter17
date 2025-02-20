@@ -15,17 +15,17 @@ struct ContentView: View {
     var - la porpiedad puede cambiar
     */
     
-    //Step 1.10,State hace que podamos cambiar la variable de false a true dentro del body
+    //Step 1.10,State hace que podamos cambiar la variable de false a true dentro del body.
     @State var showExchangeInfo = false
-    //Vid 11-Step 12,para que el usuer pueda escribir en el textfield
+    //V-11-Step 1.12,para que el user pueda escribir en el textfield.
     @State var leftAmount = ""
     @State var rightAmount = ""
-    //Step 59,le damos valores por defecto
+    //Step 59,le damos valores por defecto.
     @State var leftCurrency: Currency = .silverPenny
     @State var rightCurrency: Currency = .goldPiece
     //Step 60,para poder seleccionar la moneda
     @State var showSelectCurrency = false
-    //Step 73,focus , nos dice donde queremos poner el focus cuando escribamos algo
+    //Step 73,focus , nos dice donde queremos poner el focus cuando escribamos algo.
     @FocusState var leftTyping
     @FocusState var rightTyping
     
@@ -78,7 +78,8 @@ struct ContentView: View {
                                 //es un efecto
                                 .symbolEffect(.pulse)
                         }
-                        /*Step 13,agregamos un padding para que se acerque las etiquetas de Amount a
+                        /*
+                         Step 1.15,agregamos un padding para que se acerque las etiquetas de Amount a
                         las monedas */
                         .padding(.bottom,-5)
                         //Vid 21,step 61, le add el onTap,para poder cambiar las monedas
@@ -90,8 +91,9 @@ struct ContentView: View {
                         //Step 83
                         .popoverTip(CurrencyTip(),arrowEdge: .bottom)
                         
-                        //Vid 26,Text field
+                        //Step 1.13,Text field y le ponemos el binding con el ($)
                         TextField("Amount",text: $leftAmount)
+                            //con este aparece el color blanco del Texfield
                             .textFieldStyle(.roundedBorder)
                              //Step 74,para poner el foco
                             .focused($leftTyping)
@@ -142,9 +144,8 @@ struct ContentView: View {
                             
                         }
                         
-                        //Step-12,Text field
+                        //Step 1.14,Text field
                         TextField("Amount",text: $rightAmount)
-                            //Modifiers
                             .textFieldStyle(.roundedBorder)
                             //la palabra "Amount se irá a ➡️"
                             .multilineTextAlignment(.trailing)
@@ -162,13 +163,12 @@ struct ContentView: View {
                     }
                 }
                 .border(.red)
-                //Step-15,agregamos el padding
+                //Step 1.16,agregamos el padding
                 .padding()
                 .background(.black.opacity(0.5))
                 .clipShape(.capsule)
                 //Vid 80,para poner el teclado en decimales
                 .keyboardType(.decimalPad)
-                
                 //El spacer empuja todo hacia arriba ⬆️ en VStack
                 Spacer ()
                 /*----------------------------------------------------*/

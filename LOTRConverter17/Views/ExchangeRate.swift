@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-//Vid 13-Step-22 ,creamos una nueva vista para poder repetirlo mas veces
+//V-13 Step 1.25 ,creamos una nueva vista para poder repetirlo mas veces
 struct ExchangeRate: View {
-    /*Step-25, ponemos la estructura para que se pueda repetir más veces
+    /*Step 1.26, ponemos la estructura para que se pueda repetir más veces
     debemos usar let ,porque no va a cambiar*/
     
     let leftImage: ImageResource
@@ -17,7 +17,7 @@ struct ExchangeRate: View {
     let rightImage: ImageResource
     
     var body: some View {
-        //Step-21
+        //Step 1.20
         HStack{
             // Left currency image
             Image(leftImage)
@@ -25,10 +25,10 @@ struct ExchangeRate: View {
                 .scaledToFit()
                 .frame(height: 33)
             
-            //Step-21,Exchange rate text
+            //Step 1.21 Exchange rate text
             Text(text)
             
-            //Step-21, Right currency image
+            //Step 1.22,Right currency image
             Image(rightImage)
                 .resizable()
                 .scaledToFit()
@@ -38,6 +38,6 @@ struct ExchangeRate: View {
 }
 
 #Preview {
-    //Step-26, le pasamos un ejemplo con lo que declaramos
+    //Step 1.27, le pasamos un ejemplo con lo que declaramos
     ExchangeRate(leftImage: .silverpiece, text: " 1 Silver Piece = 4 Silver pennies", rightImage: .silverpenny)
 }
