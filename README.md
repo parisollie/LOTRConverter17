@@ -23,3 +23,10 @@ This application contains the following knowledge:
 ### The application looks like this:
 
 ![01](https://github.com/user-attachments/assets/14167089-adcc-4e5a-9f97-c77b62e7a76c)
+
+
+
+![02](https://github.com/user-attachments/assets/e3de194e-2728-40a7-9f9d-5596c41d5071)
+
+
+
