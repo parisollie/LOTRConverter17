@@ -7,7 +7,7 @@
 
 import Foundation
 import TipKit
-//V-26,Step 81
+//V-26,Step 1.77
 struct CurrencyTip: Tip {
     var title = Text("Change Currency")
     

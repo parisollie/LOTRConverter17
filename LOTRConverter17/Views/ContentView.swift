@@ -20,16 +20,25 @@ struct ContentView: View {
     //V-11 Step 1.12,para que el user pueda escribir en el textfield.
     @State var leftAmount = ""
     @State var rightAmount = ""
-    //Step 59,le damos valores por defecto.
+    
+    /*
+      V-21,Step 1.59,le damos valores por defecto para que sean los
+      primeros en aperecer en nuestra pantalla.
+     */
     @State var leftCurrency: Currency = .silverPenny
     @State var rightCurrency: Currency = .goldPiece
-    //Step 60,para poder seleccionar la moneda
+    
+    //Step 1.60,para poder seleccionar la moneda
     @State var showSelectCurrency = false
-    //Step 73,focus , nos dice donde queremos poner el focus cuando escribamos algo.
+    
+    /*
+     Step 1.70 focus, nos dice donde queremos poner el focus
+     cuando escribamos algo.
+    */
     @FocusState var leftTyping
     @FocusState var rightTyping
     
-    //Step 82
+    //V-26,Step 1.78
     let currencyTip = CurrencyTip()
     
     var body: some View {
@@ -82,30 +91,30 @@ struct ContentView: View {
                          Step 1.15,agregamos un padding para que se acerque las etiquetas de Amount a
                         las monedas */
                         .padding(.bottom,-5)
-                        //V-21,Step 61, le add el onTap,para poder cambiar las monedas
+                        //Step 1.61, le add el onTap,para poder cambiar las monedas
                         .onTapGesture {
                             showSelectCurrency.toggle()
-                            //Step 85
+                            //Step 1.81
                             currencyTip.invalidate(reason: .actionPerformed)
                         }
-                        //Step 83
+                        //Step 1.79
                         .popoverTip(CurrencyTip(),arrowEdge: .bottom)
                         
                         //Step 1.13,Text field y le ponemos el binding con el ($)
                         TextField("Amount",text: $leftAmount)
                             //con este aparece el color blanco del Texfield
                             .textFieldStyle(.roundedBorder)
-                             //Step 74,para poner el foco
+                             //Step 1.71,para poner el foco
                             .focused($leftTyping)
-                            //V-24,Step 69,observa la propiedad que queremos cambiar
+                            //observa la propiedad que queremos cambiar
                             .onChange(of: leftAmount){
-                                //Step 75, si ponemos el foco en
+                                //Step 1.72, si ponemos el foco en
                                 if leftTyping == true {
-                                    //Step 70
+                                    //Step 1.69
                                     rightAmount = leftCurrency.convert(leftAmount, to: rightCurrency)
                                 }
                             }
-                          
+                        //Step 1.76
                            //.keyboardType(.decimalPad)
                     }
                     .border(.green)
@@ -136,12 +145,11 @@ struct ContentView: View {
                         }
                         //Step 14,agregamos un padding para que se acerque
                         .padding(.bottom,-5)
-                        //Step 62
+                        //Step 1.62, para cambiar las monedas
                         .onTapGesture {
                             showSelectCurrency.toggle()
-                            //step 85
+                            //Step 1.82.
                             currencyTip.invalidate(reason: .actionPerformed)
-                            
                         }
                         
                         //Step 1.14,Text field
@@ -149,13 +157,10 @@ struct ContentView: View {
                             .textFieldStyle(.roundedBorder)
                             //la palabra "Amount se irá a ➡️"
                             .multilineTextAlignment(.trailing)
-                            //Step 76
+                            //Step 1.73, hacemos una copia de los pasos anteriores.
                             .focused($rightTyping)
-                            //Step 71
                             .onChange(of: rightAmount){
-                                //Step 77
                                 if rightTyping {
-                                    //Step 72
                                     leftAmount = rightCurrency.convert(rightAmount,to : leftCurrency)
                                 }
                             }
@@ -201,20 +206,23 @@ struct ContentView: View {
                 }
             }
             .border(.green)
-            //Step 83
+            //V-26,Step 1.80,para cuando aparezca por primera vez
             .task{
                 try? Tips.configure()
             }
-            //V-25,Step 78
+            //V-25,Step 1.74
             .onChange(of: leftCurrency){
                 leftAmount = rightCurrency.convert(rightAmount, to: leftCurrency)
             }
-            //Step 79
+            //Step 1.75
             .onChange(of: rightCurrency){
                 rightAmount = leftCurrency.convert(leftAmount, to: rightCurrency)
             }
-            //Step 63, necesitamo solo un modifier para las dos monedas,recordar no importa donde se ponga este pedazo de código.
-            //Step 66, le ponemos el binding
+            /*
+              Step 1.63, necesitamos solo un modifier para las dos monedas,
+              recordar no importa donde se ponga este pedazo de código.
+              V-22,Step 1.66, le ponemos el binding
+            */
             .sheet(isPresented: $showSelectCurrency){
                 SelectCurrency(topCurrency:$leftCurrency,bottomCurrency: $rightCurrency)
             }

@@ -10,10 +10,12 @@ import SwiftUI
 struct SelectCurrency: View {
     //Step 1.38,propiedad para poder cerrar el botón
     @Environment(\.dismiss) var dismiss
-    /*V-20,Step 52,monedas seleccionadas por defecto "topCurrency".
-    Step 58, le ponemos Binding ,alguien más decidirá por ti el valor*/
+    /*
+      V-20,Step 1.52,monedas seleccionadas por defecto "topCurrency".
+      Step 1.58, le ponemos Binding ,alguien más decidirá por ti el valor
+    */
     @Binding var topCurrency : Currency
-    //V-21,Step 64, ponemos el binding
+    //V-22,Step 1.64, ponemos el binding
     @Binding var bottomCurrency: Currency
     
     
@@ -31,9 +33,11 @@ struct SelectCurrency: View {
                 Text("Select the currency you are starting with:")
                     .fontWeight(.bold)
                 
-                //Currency icons
-                //V-21, Step 56
-                //Step 68, ponemos el binding
+                /*
+                  Currency icons
+                  V-21, Step 1.56, le ponemos el IconGrid
+                 ponemos el binding
+                */
                 IconGrid(currency: $topCurrency)
                 
                 //Step 1.35,Text
@@ -41,9 +45,10 @@ struct SelectCurrency: View {
                     .fontWeight(.bold)
                     .padding(.top)
                 
-                //Currency icons
-                //Step 57
-                //Step 68, ponemos el binding
+                /*
+                  Currency icons
+                  V-21, Step 1.57, le ponemos el IconGrid
+                */
                 IconGrid(currency: $bottomCurrency)
                 
                 //Step 1.37,Done button
@@ -66,7 +71,7 @@ struct SelectCurrency: View {
 }
 
 #Preview {
-    //Step 53, monedas seleccionadas
-    //Step 65,ponemos el .constant, cuando ponemos el binding
+    //V-20,Monedas seleccionadas, con el el select currency
+    //Step 1.65,ponemos el .constant, cuando ponemos el binding
     SelectCurrency(topCurrency: .constant(.copperPenny), bottomCurrency: .constant(.silverPiece))
 }
