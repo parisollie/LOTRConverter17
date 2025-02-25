@@ -14,17 +14,19 @@ struct IconGrid: View {
     @Binding var currency : Currency
     
     var body: some View {
-        //Vid 16,step-41 ,Currency icons, necesitamos 3 columnas
+        //V-16,Step 1.41 ,Currency icons, necesitamos 3 columnas
         LazyVGrid(columns: [GridItem(),GridItem(),GridItem()]){
-            //Vid 19,yo le puse currency,pero por lo regular es:  _
-            //Step 47,Currency.allCase ,pongo esto para que itere todo.
+            /*
+             Ponemos un Foreach para recorrer cada unode las monedas
+             V-19,yo le puse "currency",pero por lo regular es:  _
+            Step 47,Currency.allCase ,pongo esto para que itere todo.*/
             ForEach(Currency.allCases){ currency in
                 //Step 53,con self le decimos que queremos el nombre de la variable ,no del currency del Foreach
                 if self.currency == currency{
                     
                     //Step 50, accedemos a los valores de image y name.CurrencyIcon es una vista.
                     CurrencyIcon(currencyImage: currency.image, currencyName: currency.name)
-                        //Vid 20,step 51,agregamos modifiers
+                        //V-20,Step 51,agregamos modifiers
                         .shadow(color: .black, radius: 10)
                         //es el cuadrado negro
                         .overlay{
@@ -32,7 +34,7 @@ struct IconGrid: View {
                                 .stroke(lineWidth: 3)
                                 .opacity(0.5)
                         }
-                //Vid 20,Step 54,con el else, apareceran las monedas que no esten seleccionadas
+                //V-20,Step 54,con el else, apareceran las monedas que no esten seleccionadas
                 }else{
                     CurrencyIcon(currencyImage: currency.image, currencyName: currency.name)
                     //Step 55,onTapGesture con esto podemos seleccionar cualquier moneda

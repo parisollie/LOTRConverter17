@@ -6,9 +6,9 @@
 //
 
 import SwiftUI
-//Vid 15
+//V-15, creamos el archivo SelectCurrency
 struct SelectCurrency: View {
-    //Step 38,propiedad para poder cerrar el botón
+    //Step 1.38,propiedad para poder cerrar el botón
     @Environment(\.dismiss) var dismiss
     //Step 52,monedas seleccionadas por defecto.
     //Step 58, le ponemos Binding ,alguien más decidirá por ti el valor
@@ -18,24 +18,25 @@ struct SelectCurrency: View {
     
     
     var body: some View {
+        //Step 1.32
         ZStack{
-            //Step 30
+            //Step 1.33
             Image(.parchment)
                 .resizable()
                 .ignoresSafeArea()
                 .background(.brown)
             
             VStack{
-                //Step 31,Text
+                //Step 1.34,Text
                 Text("Select the currency you are starting with:")
                     .fontWeight(.bold)
                 
                 //Currency icons
-                //Vid 21, step 56
+                //V-21, Step 56
                 //Step 68, ponemos el binding
                 IconGrid(currency: $topCurrency)
                 
-                //Text
+                //Step 1.35,Text
                 Text("Select the currency you would like to convert to:")
                     .fontWeight(.bold)
                     .padding(.top)
@@ -45,9 +46,9 @@ struct SelectCurrency: View {
                 //Step 68, ponemos el binding
                 IconGrid(currency: $bottomCurrency)
                 
-                //Done button
+                //Step 1.37,Done button
                 Button("Done"){
-                    //step 39
+                    //Step 1.39
                     dismiss()
                 }
                 .buttonStyle(.borderedProminent)
@@ -56,7 +57,7 @@ struct SelectCurrency: View {
                 .padding()
                 .foregroundStyle(.white)
             }
-            //Step 37
+            //Step 1.36
             .padding()
             .multilineTextAlignment(.center)
             .foregroundStyle(.black)
@@ -65,7 +66,7 @@ struct SelectCurrency: View {
 }
 
 #Preview {
-    //step 53, monedas seleccionadas
+    //Step 53, monedas seleccionadas
     //Step 65,ponemos el .constant, cuando ponemos el binding
     SelectCurrency(topCurrency: .constant(.copperPenny), bottomCurrency: .constant(.silverPiece))
 }

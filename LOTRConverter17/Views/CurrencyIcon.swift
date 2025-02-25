@@ -13,18 +13,18 @@ struct CurrencyIcon: View {
     let currencyName: String
     
     var body: some View {
-        //Vid 15,Step 40,Currency icons
+        //V-15,Step 1.40,Currency icons, diseñamos una moneda
         ZStack(alignment: .bottom){
             // Currency Image
             Image(currencyImage)
                 .resizable()
                 .scaledToFit()
+           
             //Currency name
-            
             Text(currencyName)
                 .padding(3)
                 .font(.caption)
-                //el padre vale 100
+                //el padre vale 100, el padre es Ztsack
                 .frame(maxWidth: .infinity)
                 .background(.brown.opacity(0.75))
         }

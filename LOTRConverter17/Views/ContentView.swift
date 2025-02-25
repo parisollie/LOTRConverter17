@@ -17,7 +17,7 @@ struct ContentView: View {
     
     //Step 1.10,State hace que podamos cambiar la variable de false a true dentro del body.
     @State var showExchangeInfo = false
-    //V-11-Step 1.12,para que el user pueda escribir en el textfield.
+    //V-11 Step 1.12,para que el user pueda escribir en el textfield.
     @State var leftAmount = ""
     @State var rightAmount = ""
     //Step 59,le damos valores por defecto.
@@ -36,7 +36,7 @@ struct ContentView: View {
         /*----------------------------------------------------*/
         //En el V-8,ponemos la estructura de la app
         ZStack{
-            //V-9_ Step 1 ,Background image
+            //V-9, Step 1 ,Background image
             Image(.background)
                 //Es para hacer la imagen mas pequeña
                 .resizable()
@@ -82,10 +82,10 @@ struct ContentView: View {
                          Step 1.15,agregamos un padding para que se acerque las etiquetas de Amount a
                         las monedas */
                         .padding(.bottom,-5)
-                        //Vid 21,step 61, le add el onTap,para poder cambiar las monedas
+                        //V-21,Step 61, le add el onTap,para poder cambiar las monedas
                         .onTapGesture {
                             showSelectCurrency.toggle()
-                            //step 85
+                            //Step 85
                             currencyTip.invalidate(reason: .actionPerformed)
                         }
                         //Step 83
@@ -97,9 +97,9 @@ struct ContentView: View {
                             .textFieldStyle(.roundedBorder)
                              //Step 74,para poner el foco
                             .focused($leftTyping)
-                            //Vid 24-Step 69,observa la propiedad que queremos cambiar
+                            //V-24,Step 69,observa la propiedad que queremos cambiar
                             .onChange(of: leftAmount){
-                                //step 75, si ponemos el foco en
+                                //Step 75, si ponemos el foco en
                                 if leftTyping == true {
                                     //Step 70
                                     rightAmount = leftCurrency.convert(leftAmount, to: rightCurrency)
@@ -167,7 +167,7 @@ struct ContentView: View {
                 .padding()
                 .background(.black.opacity(0.5))
                 .clipShape(.capsule)
-                //Vid 80,para poner el teclado en decimales
+                //V-80,para poner el teclado en decimales
                 .keyboardType(.decimalPad)
                 //El spacer empuja todo hacia arriba ⬆️ en VStack
                 Spacer ()
@@ -178,7 +178,7 @@ struct ContentView: View {
                 HStack {
                     //El spacer empujará todo hacia ➡️
                     Spacer()
-                    //V_10 - Step 1.9, Info button
+                    //V-10 ,Step 1.9, Info button
                     Button{
                         //Step 1.11 ,toggle cambia la propiedad de false a true al dar click.
                         showExchangeInfo.toggle()
@@ -193,9 +193,7 @@ struct ContentView: View {
                     //esto mueve hacia a la izquierda ⬅️ desde la esquina del botón de ⓘ
                     .padding(.trailing)
                     
-                    //Vid 14,Step 27, le damos click para que nos muestre la ventana "ExchangeInfo"
-                    
-                    //Vid 14,Step 27,No importa donde se ponga el modifier no cambia,puede ser en cualquier parte del código
+                    /*V-14,Step 1.29, le damos click para que nos muestre la ventana "ExchangeInfo",No importa donde se ponga el modifier no cambia,puede ser en cualquier parte del código*/
                     .sheet(isPresented: $showExchangeInfo){
                         //Mandamos a llamar a nuestra vista 
                         ExchangeInfo()
@@ -207,15 +205,15 @@ struct ContentView: View {
             .task{
                 try? Tips.configure()
             }
-            //Vid 25- step 78
+            //V-25,Step 78
             .onChange(of: leftCurrency){
                 leftAmount = rightCurrency.convert(rightAmount, to: leftCurrency)
             }
-            //step 79
+            //Step 79
             .onChange(of: rightCurrency){
                 rightAmount = leftCurrency.convert(leftAmount, to: rightCurrency)
             }
-            //step 63, necesitamo solo un modifier para las dos monedas,recordar no importa donde se ponga este pedazo de código.
+            //Step 63, necesitamo solo un modifier para las dos monedas,recordar no importa donde se ponga este pedazo de código.
             //Step 66, le ponemos el binding
             .sheet(isPresented: $showSelectCurrency){
                 SelectCurrency(topCurrency:$leftCurrency,bottomCurrency: $rightCurrency)

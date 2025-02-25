@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
-//Vid 19,Ste-46,CaseIterable es una colección.
+//V-19,Step 46,CaseIterable es una colección.
 //Step 48,Identifiable
 enum Currency: Double, CaseIterable, Identifiable {
-    // Vid 17-Step 42,Ponemos el valor de las monedas de acuerdo a la informacion
+    // V-17, Step 42,Ponemos el valor de las monedas de acuerdo a la informacion
     case copperPenny = 6400
     case silverPenny = 64
     case silverPiece = 16
@@ -20,7 +20,7 @@ enum Currency: Double, CaseIterable, Identifiable {
     //self es cada uno de los casos.
     var id: Currency {self}
     
-    //Vid 18(computer-property)step-43,ponemos un switch para que obtenga todas las imágenes
+    //V-18,Step 43 (computer-property),ponemos un switch para que obtenga todas las imágenes
     var image: ImageResource{
         /*Step 44,El switch debe buscar todos los casos que hemos marcado anteriormente y el default se usa cuando
             queramos parar */
@@ -54,7 +54,7 @@ enum Currency: Double, CaseIterable, Identifiable {
         }
     }
     
-    //Vid 23, step 67, creamos una funcion ,ponemos nuestros párametros y espera un string ->
+    //V-23, Step 67, creamos una funcion ,ponemos nuestros párametros y espera un string ->
     //Step 70 _ es el argumento y amountString es el parametro ,hacemos esto para que sea mas facil de elegir
     func convert(_ amountString: String, to currency: Currency) -> String{
         //Primero convertimos lo que nos den a un doble ,y si el usuario pone otra cosa regresa ""

@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct ExchangeInfo: View {
-    /*Step-28,propiedad para poder cerrar el boton
+    /*Step 1.30,propiedad para poder cerrar el boton
     var cambiara el valor por eso var*/
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ZStack{
             //Creamos nuestra nueva vista
-            //V-12-Step 1.17, Background parchment image.
+            //V-12 Step 1.17, Background parchment image.
             Image(.parchment)
                 .resizable()
                 .ignoresSafeArea()
@@ -40,7 +40,7 @@ struct ExchangeInfo: View {
                 
                 //-Step 1.23, Done button
                 Button("Done"){
-                    //Step 29, cerramos el botón
+                    //Step 1.31, cerramos el botón
                     dismiss()
                 }
                 //Se nos encierra el botn en una caja
