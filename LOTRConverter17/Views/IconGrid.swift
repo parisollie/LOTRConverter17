@@ -17,7 +17,7 @@ struct IconGrid: View {
         //Vid 16,step-41 ,Currency icons, necesitamos 3 columnas
         LazyVGrid(columns: [GridItem(),GridItem(),GridItem()]){
             //Vid 19,yo le puse currency,pero por lo regular es:  _
-            //Step 47,Currency.allCase ,pongo esto para que itere todo
+            //Step 47,Currency.allCase ,pongo esto para que itere todo.
             ForEach(Currency.allCases){ currency in
                 //Step 53,con self le decimos que queremos el nombre de la variable ,no del currency del Foreach
                 if self.currency == currency{
