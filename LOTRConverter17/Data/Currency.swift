@@ -6,24 +6,26 @@
 //
 
 import SwiftUI
-//V-19,Step 46,CaseIterable es una colección.
-//Step 48,Identifiable
+//V-19,Step 1.46,CaseIterable es una colección.
+//Step 1.48,le ponemos Identifiable
 enum Currency: Double, CaseIterable, Identifiable {
-    // V-17, Step 42,Ponemos el valor de las monedas de acuerdo a la informacion
+    // V-17, Step 1.42,Ponemos el valor de las monedas de acuerdo a la información.
     case copperPenny = 6400
     case silverPenny = 64
     case silverPiece = 16
     case goldPenny = 4
     case goldPiece = 1
     
-    //Step 49,ponemos el id,debe ir para no marcar error el Identifiable.
-    //self es cada uno de los casos.
+    /*Step 1.49,ponemos el id,debe ir para no marcar error con el Identifiable.
+    self es cada uno de los casos*/
     var id: Currency {self}
     
-    //V-18,Step 43 (computer-property),ponemos un switch para que obtenga todas las imágenes
+    //V-18,Step 1.43 (computer-property),ponemos un switch para que obtenga todas las imágenes.
     var image: ImageResource{
-        /*Step 44,El switch debe buscar todos los casos que hemos marcado anteriormente y el default se usa cuando
-            queramos parar */
+        /*
+         Step 1.44,El switch debe buscar todos los casos que hemos marcado
+         anteriormente y el default se usa cuando queramos parar.
+        */
         switch self{
           case .copperPenny:
                   //esto corresponde a la imágen que tenemos en asset
@@ -38,7 +40,7 @@ enum Currency: Double, CaseIterable, Identifiable {
                   .goldpiece
         }
     }
-    //Step 45,ahora hacemos lo mismo con el nombre con el switch.
+    //Step 1.45,ahora hacemos lo mismo con el nombre con el switch.
     var name : String {
         switch self {
           case .copperPenny:

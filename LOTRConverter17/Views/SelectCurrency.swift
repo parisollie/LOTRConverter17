@@ -10,10 +10,10 @@ import SwiftUI
 struct SelectCurrency: View {
     //Step 1.38,propiedad para poder cerrar el botón
     @Environment(\.dismiss) var dismiss
-    //Step 52,monedas seleccionadas por defecto.
-    //Step 58, le ponemos Binding ,alguien más decidirá por ti el valor
-    //Step 64, ponemos el binding
+    /*V-20,Step 52,monedas seleccionadas por defecto "topCurrency".
+    Step 58, le ponemos Binding ,alguien más decidirá por ti el valor*/
     @Binding var topCurrency : Currency
+    //V-21,Step 64, ponemos el binding
     @Binding var bottomCurrency: Currency
     
     
